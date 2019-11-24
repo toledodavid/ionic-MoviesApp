@@ -10,12 +10,18 @@ import {Pelicula} from '../interfaces/interfaces';
 export class Tab1Page implements OnInit {
 
   recent_movies: Pelicula[] = [];
+  popular_movies: Pelicula[] = [];
 
   constructor(private movieService: MoviesService) {}
 
   ngOnInit() {
     this.movieService.getFeature().subscribe((response) => {
       this.recent_movies = response.results;
+    });
+
+    this.movieService.getPopular().subscribe((response) => {
+      console.log('Populares', response);
+      this.popular_movies = response.results;
     });
   }
 

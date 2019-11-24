@@ -38,4 +38,10 @@ export class MoviesService {
 
     return this.run_query<RespuestaMDB>(`/discover/movie?primary_release_date.gte=${start}&primary_release_date.lte=${end}`);
   }
+
+  getPopular() {
+    const query = '/discover/movie?sort_by=popularity.desc';
+    return this.run_query<RespuestaMDB>(query);
+  }
+
 }
