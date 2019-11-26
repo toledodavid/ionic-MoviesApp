@@ -13,7 +13,6 @@ export class PeersPipe implements PipeTransform {
       return result;
     }, []);
 
-    console.log(peers);
     return peers;
   }
 

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pelicula } from '../../interfaces/interfaces';
+
 
 @Component({
   selector: 'app-slideshow-peers',
@@ -9,6 +10,7 @@ import { Pelicula } from '../../interfaces/interfaces';
 export class SlideshowPeersComponent implements OnInit {
 
   @Input() movies: Pelicula[] = [];
+  @Output() load_more = new EventEmitter();
 
   slideOpts = {
     slidesPerView: 3.3,
@@ -19,5 +21,9 @@ export class SlideshowPeersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+
+  onClick() {
+    this.load_more.emit();
+  }
 
 }

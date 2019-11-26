@@ -31,6 +31,6 @@
     </ion-row>
   </ion-grid>
 
-  <app-slideshow-peers [movies]="popular_movies"></app-slideshow-peers>
+  <app-slideshow-peers [movies]="popular_movies" (load_more)="load_more()"></app-slideshow-peers>
 
 </ion-content>
