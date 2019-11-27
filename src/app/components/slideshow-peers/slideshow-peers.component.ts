@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pelicula } from '../../interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
+import { DetalleComponent } from '../../components/detalle/detalle.component';
 
 
 @Component({
@@ -18,12 +20,22 @@ export class SlideshowPeersComponent implements OnInit {
     spaceBetween: -10
   }
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {}
 
   onClick() {
     this.load_more.emit();
+  }
+
+  async showDetail(id: string) {
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps: {
+        id: id
+      }
+    });
+    await modal.present();
   }
 
 }
