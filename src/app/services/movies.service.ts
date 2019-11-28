@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RespuestaMDB} from '../interfaces/interfaces';
+import {RespuestaMDB, PeliculaDetalle, RespuestaCredits} from '../interfaces/interfaces';
 import {environment} from '../../environments/environment';
 
 const URL = environment.url;
@@ -22,7 +22,6 @@ export class MoviesService {
   }
 
   getFeature() {
-
     const today = new Date();
     const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
     const month = today.getMonth() + 1;
@@ -42,10 +41,17 @@ export class MoviesService {
   }
 
   getPopular() {
-
     this.popular_page++;
     const query = `/discover/movie?sort_by=popularity.desc&page=${this.popular_page}`;
     return this.run_query<RespuestaMDB>(query);
+  }
+
+  getMovieDetail(id: string) {
+    return this.run_query<PeliculaDetalle>(`/movie/${id}?a=1`);
+  }
+
+  getMovieActors(id: string) {
+    return this.run_query<RespuestaCredits>(`/movie/${id}/credits?a=1`);
   }
 
 }
