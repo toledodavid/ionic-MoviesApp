@@ -7,6 +7,20 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  searchText: string = '';
+  ideas: string[] = ['Spiderman', 'Avenger', 'El señor de los anillos', 'La vida es bella'];
+
   constructor() {}
+
+
+  search(event) {
+    const value = event.detail.value;
+    console.log(event);
+  }
+
+  saveIdea(idea: string) {
+    console.log(idea);
+    this.searchText = idea;
+  }
 
 }
