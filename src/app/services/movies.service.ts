@@ -54,4 +54,8 @@ export class MoviesService {
     return this.run_query<RespuestaCredits>(`/movie/${id}/credits?a=1`);
   }
 
+  searchMovie(text: string) {
+    return this.run_query(`/search/movie?query=${text}`);
+  }
+
 }
