@@ -20,11 +20,15 @@ export class DetalleComponent implements OnInit {
     freeMode: true,
     spaceBetween: -5
   };
+  starIcon = 'star-outline';
 
   constructor(private moviesService: MoviesService, public modalCtrl: ModalController, private dataLocal: DataLocalService) { }
 
   ngOnInit() {
     //console.log('ID', this.id);
+
+    this.dataLocal.movie_exist(this.id).then(exist => this.starIcon = (exist) ? 'star' : 'star-outline');
+
     this.moviesService.getMovieDetail(this.id).subscribe((response) => {
       console.log(response);
       this.movie = response;
@@ -37,7 +41,8 @@ export class DetalleComponent implements OnInit {
   }
 
   favorite() {
-    this.dataLocal.save_movie(this.movie);
+    const exist = this.dataLocal.save_movie(this.movie);
+    this.starIcon = (exist) ? 'star' : 'star-outline';
   }
 
   back() {
