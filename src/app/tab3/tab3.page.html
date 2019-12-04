@@ -1,9 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Favoritos</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngFor="let gender of genders">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h4>{{gender.name}}</h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <app-slideshow-poster [movies]=" movies"></app-slideshow-poster>
+  </div>
+
+</ion-content>
