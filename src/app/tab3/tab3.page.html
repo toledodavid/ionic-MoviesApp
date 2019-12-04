@@ -9,16 +9,16 @@
     </ion-row>
   </ion-grid>
 
-  <div *ngFor="let gender of genders">
-    <ion-grid>
+  <div *ngFor="let movie of favoriteByGender">
+    <ion-grid *ngIf="movie.movis.length > 0">
       <ion-row>
         <ion-col>
-          <h4>{{gender.name}}</h4>
+          <h4>{{movie.gender}}</h4>
         </ion-col>
       </ion-row>
-    </ion-grid>
 
-    <app-slideshow-poster [movies]=" movies"></app-slideshow-poster>
+      <app-slideshow-poster [movies]=" movie.movis"></app-slideshow-poster>
+    </ion-grid>
   </div>
 
 </ion-content>
